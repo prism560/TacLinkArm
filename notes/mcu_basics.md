@@ -34,7 +34,6 @@ Arduino Uno로 회로 3개를 시뮬레이션했다. 코드는 직접 입력했�
 ### 1) LED Blink
 13번 → 220Ω 저항 → LED 애노드(+), LED 캐소드(−) → GND. `LED_BUILTIN`이 13번이라 보드 LED와 외부 LED가 함께 1초 간격으로 깜빡인다.
  
-![Blink 회로](tinkercad_blink.png)
  
 ```cpp
 void setup() {
@@ -52,8 +51,7 @@ void loop() {
 ### 2) 버튼(INPUT_PULLUP) → LED
 버튼을 11번과 GND 사이에 연결했다. 평소에는 내부 풀업 때문에 HIGH(1), 누르면 LOW(0)가 되고 그때 3번의 LED를 켠다. LED 직렬 저항은 캐소드 쪽에 두었다(직렬이면 위치는 상관없다).
  
-![버튼·PWM 회로](tinkercad_button_pwm.png)
- 
+
 ```cpp
 void setup() {
   Serial.begin(9600);
