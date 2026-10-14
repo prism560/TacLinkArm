@@ -28,5 +28,79 @@ OUTPUT은 저임피던스 상태이다. ATmega 핀의 절대 최대 정격은 40
 - 풀업으로 핀을 5V로 유지하는 원리를 회로이론에서 배운 것 같은데 기억이 잘 안 난다. 회로를 직접 그리고, 계산하고, 설명할 수 있으면 좋겠다.
 - (코치 제안) 고임피던스·저임피던스가 정확히 무슨 뜻인지, 왜 입력은 고임피던스이고 출력은 저임피던스여야 하는지.
 
-## Tinkercad 실습 (10-13 추가 예정)
-- LED Blink / 버튼(INPUT_PULLUP) / PWM 밝기 조절 — 링크 또는 캡처
+## Tinkercad 실습 (2026-10-13)
+Arduino Uno로 회로 3개를 시뮬레이션했다. 코드는 직접 입력했다.
+ 
+### 1) LED Blink
+13번 → 220Ω 저항 → LED 애노드(+), LED 캐소드(−) → GND. `LED_BUILTIN`이 13번이라 보드 LED와 외부 LED가 함께 1초 간격으로 깜빡인다.
+ 
+![Blink 회로](tinkercad_blink.png)
+ 
+```cpp
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+ 
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000);
+}
+```
+ 
+### 2) 버튼(INPUT_PULLUP) → LED
+버튼을 11번과 GND 사이에 연결했다. 평소에는 내부 풀업 때문에 HIGH(1), 누르면 LOW(0)가 되고 그때 3번의 LED를 켠다. LED 직렬 저항은 캐소드 쪽에 두었다(직렬이면 위치는 상관없다).
+ 
+![버튼·PWM 회로](tinkercad_button_pwm.png)
+ 
+```cpp
+void setup() {
+  Serial.begin(9600);
+  pinMode(11, INPUT_PULLUP);
+  pinMode(3, OUTPUT);
+}
+ 
+void loop() {
+  int sensorVal = digitalRead(11);
+  Serial.println(sensorVal);
+ 
+  if (sensorVal == LOW) {
+    digitalWrite(3, HIGH);
+  } else {
+    digitalWrite(3, LOW);
+  }
+  delay(100);
+}
+```
+ 
+### 3) PWM 밝기 조절
+같은 회로에서 `digitalWrite` 대신 `analogWrite`를 썼다. 3번은 PWM 핀(~)이다. 누르면 127(약 50%), 떼면 255(100%)로 밝기가 두 단계로 바뀐다.
+ 
+```cpp
+void setup() {
+  Serial.begin(9600);
+  pinMode(11, INPUT_PULLUP);
+  pinMode(3, OUTPUT);
+}
+ 
+void loop() {
+  int sensorVal = digitalRead(11);
+  Serial.println(sensorVal);
+ 
+  if (sensorVal == LOW) {
+    analogWrite(3, 127);
+  } else {
+    analogWrite(3, 255);
+  }
+  delay(100);
+}
+```
+ 
+### 실습에서 알게 된 것
+- 버튼 입력에는 PWM 핀(11번)보다 2·4·7 같은 일반 핀을 쓰는 것이 좋다. PWM 핀은 출력용으로 아껴 둔다.
+## PWM: analogWrite는 0~255
+(여기에 내 말로 2~3줄 쓰기: analogRead는 왜 0~1023이고 analogWrite는 왜 0~255인지 / analogWrite가 실제로 내보내는 신호는 무엇인지 / 평균 전압은 어떻게 계산하는지)
+ 
+## 아직 모르는 것 (10-13 추가)
+- 타이머 카운터의 비트 수를 늘리면 왜 PWM 주파수가 낮아지는지(해상도와 주파수의 트레이드오프). 코치에게 다시 설명을 듣기로 함.
