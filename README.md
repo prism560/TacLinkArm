@@ -15,8 +15,14 @@
 * [부품 목록 (BoM)](BoM.md)
 * [빌드로그 #1: C 포인터](notes/c_pointers.md)
 * [V1 기획서 목차](docs/proposal.md)
+* [빌드로그 #2: MCU 작동 원리 (클럭·GPIO·ADC·PWM)](notes/mcu_basics.md)
+* [빌드로그 #3: C++ 입문 1 (구조체·클래스·참조)](notes/cpp_basics.md)
+* [2·3주차 복습 정리](notes/review_week2_3.md)
 
-진행 상황: S1 1주차 완료 (2026-10-05)
+진행 상황: S1 3주차 완료 (2026-10-19)
+
+* 2주차: MCU 작동 원리(클럭·GPIO·ADC), Tinkercad LED·버튼·PWM 시뮬레이션, 부품 2차 주문
+* 3주차: C++ 입문 1(구조체·열거형·클래스·const·참조), 부품 1·2차 전량 수령, 납땜 도구 준비
 
 
 
