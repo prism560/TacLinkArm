@@ -18,11 +18,12 @@
 * [빌드로그 #2: MCU 작동 원리 (클럭·GPIO·ADC·PWM)](notes/mcu_basics.md)
 * [빌드로그 #3: C++ 입문 1 (구조체·클래스·참조)](notes/cpp_basics.md)
 * [2·3주차 복습 정리](notes/review_week2_3.md)
+* [MyoWare 2.0 안전·연결 체크리스트](notes/myoware_checklist.md)
+* [빌드로그 #4: 첫 핀 헤더 납땜](notes/soldering.md)
+* [빌드로그 #5: FSR→LED](notes/fsr_led.md)
 
-진행 상황: S1 3주차 완료 (2026-10-19)
+진행 상황: S1 4주차 마무리 중 (2026-10-26)
 
 * 2주차: MCU 작동 원리(클럭·GPIO·ADC), Tinkercad LED·버튼·PWM 시뮬레이션, 부품 2차 주문
 * 3주차: C++ 입문 1(구조체·열거형·클래스·const·참조), 부품 1·2차 전량 수령, 납땜 도구 준비
-
-
-
+* 4주차: 부품 검수·Nano Blink, MyoWare 안전 수칙, 첫 핀 헤더 납땜(MyoWare·INA219 재작업 필요), Tinkercad FSR 분압, FSR→LED 실측(0~988)
