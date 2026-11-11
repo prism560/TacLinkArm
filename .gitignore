@@ -1,0 +1,11 @@
+# 영상은 Git 밖(../TacLinkArm_media/)
+*.mp4
+*.mov
+*.avi
+TacLinkArm_media/
+# Claude Code 개인 설정
+.claude/settings.local.json
+# OS·편집기
+.DS_Store
+Thumbs.db
+desktop.ini
